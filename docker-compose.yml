@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    container_name: react_test
+    # image: node:12.13.0
+    build:
+      context: .
+    # environment:
+    #   - REACT_APP_CMS_URL=${CMS_URL}
+    ports:
+      - 3000:3000
+    networks:
+      - app-network
+    volumes:
+      - .:/srv/app
+    command: sh -c "while true; do sleep 10; done"
+    # command: sh -c "npm run start"
+  
+networks:
+  app-network:
+    driver: "bridge"
